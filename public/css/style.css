@@ -1,0 +1,16 @@
+.navbar-light .navbar-brand {
+    color: white;
+}
+
+.navbar-light .navbar-brand:hover {
+    color: white;
+}
+
+.nav-link {
+    color: white;
+}
+
+.navbar-laravel {
+    background-color: #282828;
+}
+
