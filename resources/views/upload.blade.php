@@ -29,15 +29,33 @@
     @else
     <div class="container">
         <h2 class="head" style="border-bottom: 1px solid #282828; font-size: 20px">Upload a screenshot</h2>
-        <form name="upload" action="" method="POST">
+<div style="height: 100%; width: 600px; position: absolute">
+        <h4>How this works</h4>
+    <p>Test</p>
+</div>
+        <form name="upload" action="" method="POST" style="width: 550px; float: right;">
+
+            <div class="upload-aircraft" style="margin-bottom: 10px">
+                <center>
+                    <p class="head" style="border-bottom: 1px solid grey; font-size: 20px; width: 90%">Aircraft Details</p>
+                </center>
+                <input type="text" placeholder="Aircraft REG">
+                <input type="text" placeholder="Aircraft SELCAL">
+                <select style="width: 170px; height: 29px; margin-left: 10px; box-sizing: border-box;">
+                    @foreach($airlines as $airline)
+                        <option value="{{ $airline->name }}">{{ $airline->name }}</option>
+                        @endforeach
+                </select>
+            </div>
+
             <div class="upload-details">
-
-                <p class="head" style="border-bottom: 1px solid grey; font-size: 20px; width: 90%">Screenshot Details</p>
-
+                <center>
+                <p class="head" style="border-bottom: 1px solid grey; font-size: 20px; width: 90%">Screenshot Status</p>
+                </center>
                 <div class="status">
                 <p style="font-size: 15px; font-weight: bold; float: left; margin-left: 10px">Status</p> <br>
-                <input type="radio" id="yesCheck" name="status" value="ground" onclick="javascript:airborngroundCheck();"> <label for="ground">On ground</label>
-                <input type="radio"  id="noCheck" name="status" value="airborn" onclick="javascript:airborngroundCheck();"><label for="airborn">Airborn</label>
+                <input style="position: relative; left: -40px" type="radio" id="yesCheck" name="status" value="ground" onclick="javascript:airborngroundCheck();"> <label style="position: relative; left: -35px" for="ground">On ground</label>
+                <input style="position: relative; left: -30px" type="radio"  id="noCheck" name="status" value="airborn" onclick="javascript:airborngroundCheck();"><label style="position: relative; left: -25px" for="airborn">Airborn</label>
                 </div>
 
                 <div id="ifYes" style="visibility:hidden">
@@ -49,7 +67,7 @@
                 </select>
                 </div>
                 <div id="ifNo" style="visibility:hidden">
-                <div style="margin-left: 10px; font-size: 15px; font-weight: bold; float: left; position: absolute; top: 220px">Overhead country<br>
+                <div style="margin-left: 10px; font-size: 15px; font-weight: bold; float: left; position: absolute; position: relative; bottom: 50px">Overhead country<br>
                     <select name="country"  style="width: 500px; margin-bottom: 10px;">
                         <option value="United States">United States</option>
                         <option value="United Kingdom">United Kingdom</option>
@@ -295,6 +313,7 @@
                     </select>
                 </div>
             </div>
+                <div class="upload-remarks"><textarea style="width: 100%; height: 200px" placeholder="Remarks"></textarea></div>
         </form>
     </div>
 

@@ -15,9 +15,20 @@
 }
 
 .upload-details {
-    height: 400px;
-    width: 600px;
+    height: 200px;
+    width: 550px;
     border: 1px solid grey;
     float: right;
 }
 
+.upload-aircraft {
+    height: 200px;
+    width: 550px;
+    border: 1px solid grey;
+    float: right;
+}
+
+.upload-aircraft input {
+    position: relative;
+    left: 10px;
+}
