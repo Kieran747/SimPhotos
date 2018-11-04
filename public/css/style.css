@@ -14,3 +14,10 @@
     background-color: #282828;
 }
 
+.upload-details {
+    height: 400px;
+    width: 600px;
+    border: 1px solid grey;
+    float: right;
+}
+

@@ -16,10 +16,18 @@ Route::get('/', function () {
 });
 
 Route::get('/upload', function () {
-    return view('upload');
+
+    $airports = DB::table('airports')->where('approved', '=', '1')->get();
+    return view('upload', compact('airports'));
+});
+
+Route::get('/request/airport', function () {
+    return view('add');
 });
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/airport-request', 'airportsController@store');
