@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    $todaysphotos = DB::table('photos')->where('created_at', '=', date("Y/m/d"))->get();
+    return view('home', compact('todaysphotos'));
 });
 
 Route::get('/upload', function () {
@@ -22,12 +23,17 @@ Route::get('/upload', function () {
     return view('upload', compact('airports', 'airlines'));
 });
 
+Route::get('/photo/{id}', function ($id) {
+    $photo = DB::table('photos')->find($id);
+    return view('photo', compact('photo'));
+});
+
 Route::get('/request/airport', function () {
-    return view('add');
+    return view('request.airport');
 });
 
 Route::get('/request/airline', function () {
-    return view('airline');
+    return view('request.airline');
 });
 
 
@@ -38,4 +44,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/airport-request', 'airportsController@store');
 
 Route::post('/airline-request', 'airlinesController@store');
+
+Route::post('upload-photo', 'photosController@store');
 

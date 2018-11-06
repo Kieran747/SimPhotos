@@ -33,19 +33,24 @@
         <h4>How this works</h4>
     <p>Test</p>
 </div>
-        <form name="upload" action="" method="POST" style="width: 550px; float: right;">
+        <form name="upload" action="upload-photo" method="POST" style="width: 550px; float: right;" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            <input name="user" type="text" value="{{ Auth::user()->id }}" hidden>
+            <input name="date" type="text" value="<?php echo date("Y/m/d"); ?>" hidden>
+            <input name="users_name" type="text" value="{{ Auth::user()->name }}" hidden>
 
             <div class="upload-aircraft" style="margin-bottom: 10px">
                 <center>
                     <p class="head" style="border-bottom: 1px solid grey; font-size: 20px; width: 90%">Aircraft Details</p>
                 </center>
-                <input type="text" placeholder="Aircraft REG">
-                <input type="text" placeholder="Aircraft SELCAL">
-                <select style="width: 170px; height: 29px; margin-left: 10px; box-sizing: border-box;">
+                <input type="text" placeholder="Aircraft REG" name="registration">
+                <input type="text" placeholder="Aircraft SELCAL" name="SELCAL" maxlength="5">
+                <select style="width: 170px; height: 29px; margin-left: 10px; box-sizing: border-box;" name="airline">
                     @foreach($airlines as $airline)
                         <option value="{{ $airline->name }}">{{ $airline->name }}</option>
                         @endforeach
                 </select>
+                <input name="aircraft" type="text" placeholder="Aircraft">
             </div>
 
             <div class="upload-details">
@@ -311,12 +316,25 @@
                         <option value="Zambia">Zambia</option>
                         <option value="Zimbabwe">Zimbabwe</option>
                     </select>
+
                 </div>
             </div>
-                <div class="upload-remarks"><textarea style="width: 100%; height: 200px" placeholder="Remarks"></textarea></div>
-        </form>
+                <select style=" position: relative;bottom: 50px; left: 10px" name="simulator">
+                    <option value="Prepar3d V1">Prepar3d V1</option>
+                    <option value="Prepar3d V2">Prepar3d V2</option>
+                    <option value="Prepar3d V3">Prepar3d V3</option>
+                    <option value="Prepar3d V4">Prepar3d V4</option>
+                    <option value="Microsoft FlightSimulator X">Microsoft FlightSimulator X</option>
+                    <option value="X-plane 9">X-plane 9</option>
+                    <option value="X-plane 10">X-plane 10</option>
+                    <option value="X-plane 11">X-plane 11</option>
+                    </option>
+                </select>
+                <div class="upload-remarks"><textarea style="width: 100%; height: 200px" placeholder="Remarks" name="remarks"></textarea></div>
+                <input name="file" type="file"> <br>
+                <button name="submit" class="btn btn-primary" style="width: 100%">Upload</button>
     </div>
-
+        </form>
 
     @endguest
 @endsection
