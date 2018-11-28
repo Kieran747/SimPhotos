@@ -12,8 +12,20 @@
 */
 
 Route::get('/', function () {
-    $todaysphotos = DB::table('photos')->where('created_at', '=', date("Y/m/d"))->get();
-    return view('home', compact('todaysphotos'));
+    $todaysphotos = DB::table('photos')->where('created_at', '=', date("Y/m/d"))->paginate(5);
+    $randoms = DB::table('photos')->orderBy(DB::raw('RAND()'))->take(3)->get();
+    $front = DB::table('photos')->orderBy(DB::raw('RAND()'))->take(1)->get();
+    return view('home', compact('todaysphotos', 'randoms', 'front'));
+});
+
+Route::get('/photo/{id}', function () {
+    $randoms = DB::table('photos')->orderBy(DB::raw('RAND()'))->take(3)->get();
+    return view('photo', compact('randoms'));
+});
+
+Route::get('/user/{id}', function ($id) {
+    $user = DB::table('users')->find($id);
+    return view('profile', compact('user'));
 });
 
 Route::get('/upload', function () {
