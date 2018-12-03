@@ -18,17 +18,20 @@ class PhotosController extends Controller
             $photos->country = '#';
         }
 
-        $photos->registration = request('registration');
+        $photos->registration = strtoupper(request('registration'));
         $photos->date = request('date');
         $photos->remarks = request('remarks');
-        $photos->aircraft = request('aircraft');
+        $photos->aircraft = strtoupper(request('aircraft'));
         $photos->airline = request('airline');
-        $photos->SELCAL = request('SELCAL');
+        $photos->SELCAL = strtoupper(request('SELCAL'));
         $photos->user = request('user');
-        $photos->likes = '0';
         $photos->simulator = request('simulator');
         $photos->status = request('status');
         $photos->users_name = request('users_name');
+
+        $request->validate([
+            'file' => 'image|mimes:jpeg,bmp,png',
+        ]);
 
         $image = $request->file('file');
         $filename = time() . '.' . $image->getClientOriginalExtension();

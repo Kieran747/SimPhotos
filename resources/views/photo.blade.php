@@ -1,4 +1,5 @@
 @extends('layouts.app')
+<title>{{ $photo->aircraft }} - {{ $photo->registration }} - {{ $photo->airline }} </title>
 <style>
     .head {
         position: relative; float: left;

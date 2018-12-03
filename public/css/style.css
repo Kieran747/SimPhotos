@@ -55,3 +55,26 @@
     position: relative; width: 100%;
 }
 
+.user-page-screenshot {
+    height: 270px;
+    width: 350px;
+    border: 1px solid grey;
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    background-color: #282828;
+    font-size: 14px;
+    color: white;
+    position: relative; top: 15px;
+}
+
+.user-page-screenshot:hover {
+    border: 3px solid black;
+}
+
+.user-page-screenshot-bottom {
+    background-color: black;
+    height: 50px;
+    position: relative;
+    width: 100%;
+}

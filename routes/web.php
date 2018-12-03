@@ -24,8 +24,9 @@ Route::get('/photo/{id}', function () {
 });
 
 Route::get('/user/{id}', function ($id) {
+    $photos = DB::table('photos')->where('user', '=', $id)->get();
     $user = DB::table('users')->find($id);
-    return view('profile', compact('user'));
+    return view('profile', compact('user', 'photos'));
 });
 
 Route::get('/upload', function () {
@@ -44,6 +45,10 @@ Route::get('/request/airport', function () {
     return view('request.airport');
 });
 
+Route::get('/account/settings', function () {
+    return view('settings', compact('user'));
+});
+
 Route::get('/request/airline', function () {
     return view('request.airline');
 });
@@ -52,6 +57,8 @@ Route::get('/request/airline', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('account-photo', 'AccountController@picture');
 
 Route::post('/airport-request', 'airportsController@store');
 
