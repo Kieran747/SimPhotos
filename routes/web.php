@@ -49,6 +49,11 @@ Route::get('/account/settings', function () {
     return view('settings', compact('user'));
 });
 
+Route::get('/photos/id', function ($id) {
+    $photos = DB::table('photos')->find($id);
+    return view('photos', compact('photos'));
+});
+
 Route::get('/request/airline', function () {
     return view('request.airline');
 });

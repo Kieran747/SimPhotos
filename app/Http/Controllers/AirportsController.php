@@ -16,6 +16,6 @@ class AirportsController extends Controller
         $airports->save();
 
 
-        return redirect('/home');
+        return redirect('/');
     }
 }

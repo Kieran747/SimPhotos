@@ -15,9 +15,19 @@
 </style>
 @section('content')
 
+
     <div class="container">
+
+
         <div>
         <img src="/storage/images/{{ $photo->link }}" style="width: 100%">
+            <?php
+            if($photo->user == Auth::user()->id ) {
+                echo '<a href="/delete"><button class="btn btn-primary" name="edit" style=" position: relative; float: right; border-color: red; background-color: red;">Delete</button></a>';
+            } else {
+                echo '';
+            }
+            ?>
         <h4 style="position: relative; top: 5px; color: grey; font-size: 17px">Registration</h4>
             <h5>{{ $photo->registration }}</h5>
             <h4 style="position: relative; top: 5px; color: grey; font-size: 17px">Uploaded at </h4>
@@ -27,6 +37,7 @@
 
                 <p style="color: black;">{{ $photo->remarks }}</p>
             </div>
+
     </div>
 
         <div class="photo-details" style="position: relative; ">
@@ -34,7 +45,7 @@
             <h2 class="head" style="border-bottom: 1px solid #282828; font-size: 20px; width: 100%">Aircraft</h2>
                 <p style="margin-bottom: 0px">Reg: <em style="color: #1d68a7; font-weight: bold; "> <a href="/registration/{{ $photo->registration }}">{{ $photo->registration }}</a> </em> </p>
                 <p style="margin-bottom: 0px">Aircraft: <em style="color: #1d68a7; font-weight: bold; "> <a href="/aircraft/{{ $photo->aircraft }}">{{ $photo->aircraft }}</a> </em> </p>
-                <p style="margin-bottom: 0px">Airline: <em style="color: #1d68a7; font-weight: bold; "> <a href="/Airline/{{ $photo->airline }}">{{ $photo->airline }}</a> </em> </p>
+                <p style="margin-bottom: 0px">Airline: <em style="color: #1d68a7; font-weight: bold; "> <a href="/airline/{{ $photo->airline }}">{{ $photo->airline }}</a> </em> </p>
             </div>
 
             <div class="photo-details" style="width: 20%; float: left; margin-left: 20px">
@@ -58,6 +69,7 @@
                 <a href="/user/{{ $photo->user }}"><p>{{ $photo->users_name }}</p></a>
             </div>
         </div>
+
 
     </div>
 @endsection

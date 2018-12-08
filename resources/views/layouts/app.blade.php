@@ -60,6 +60,9 @@
                                     <a class="dropdown-item" href="/upload">
                                         {{ __('Upload') }}
                                     </a>
+                                    <a class="dropdown-item" href="/user/{{ Auth::user()->id }}">
+                                        {{ __('Profile') }}
+                                    </a>
                                     <a class="dropdown-item" href="/account/settings">
                                         {{ __('Settings') }}
                                     </a>

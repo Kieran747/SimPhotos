@@ -22,7 +22,6 @@ class AccountController extends Controller
 
         $account_picture->update();
 
-
-        return redirect('/');
+        return back();
     }
 }

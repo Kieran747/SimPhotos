@@ -18,6 +18,6 @@ class AirlinesController extends Controller
         $airlines->save();
 
 
-        return redirect('/home');
+        return redirect('/');
     }
 }
