@@ -56,13 +56,12 @@
 }
 
 .user-page-screenshot {
-    height: 270px;
+    height: 215px;
     width: 350px;
     border: 1px solid grey;
     float: left;
     margin-left: 5px;
     margin-bottom: 10px;
-    background-color: #282828;
     font-size: 14px;
     color: white;
     position: relative; top: 15px;

@@ -3,6 +3,14 @@
 @section('content')
     <div class="container">
 
+        <div class="front">
+            @foreach($front as $fron)
+                <center>
+            <img src="/storage/images/{{ $fron->link }}" style="width: 900px">
+                </center>
+                @endforeach
+        </div>
+
         <div class="todays-photos">
 
         </div>

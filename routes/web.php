@@ -38,7 +38,8 @@ Route::get('/upload', function () {
 
 Route::get('/photo/{id}', function ($id) {
     $photo = DB::table('photos')->find($id);
-    return view('photo', compact('photo'));
+    $comments = DB::table('comments')->where('photo_id', $id)->get();
+    return view('photo', compact('photo', 'comments'));
 });
 
 Route::get('/request/airport', function () {
@@ -51,7 +52,8 @@ Route::get('/account/settings', function () {
 
 Route::get('/photos/id', function ($id) {
     $photos = DB::table('photos')->find($id);
-    return view('photos', compact('photos'));
+    $comments = DB::table('comments')->find($id);
+    return view('photos', compact('photos', 'comments'));
 });
 
 Route::get('/request/airline', function () {
@@ -70,4 +72,6 @@ Route::post('/airport-request', 'airportsController@store');
 Route::post('/airline-request', 'airlinesController@store');
 
 Route::post('upload-photo', 'photosController@store');
+
+Route::post('/comment', 'CommentsController@store');
 
