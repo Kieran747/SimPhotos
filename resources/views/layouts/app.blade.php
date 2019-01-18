@@ -27,6 +27,21 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     SimPhotos
                 </a>
+
+
+                <a class="navbar-brand" href="{{ url('/about') }}" style="font-size: 15px">
+                    About
+                </a>
+
+
+                <center>
+
+                <form method="get" action="/searchfunction.php">
+                    <input type="text" name="search" placeholder="Search" style="border-radius: 5px; padding-left: 5px; color: #262626; float: left; font-size: 10pt; border: none; width: 400px;  height: 35px;">
+                </form>
+                </center>
+
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -34,6 +49,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+
 
                     </ul>
 

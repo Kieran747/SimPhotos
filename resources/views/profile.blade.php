@@ -15,7 +15,8 @@
         @endauth
         <div class="profile-info">
             <img src="/storage/images/accounts/{{ $user->account_photo }}" style="width: 220px; height: 210px; border: 5px solid black; position: relative; float: left">
-            <h2 style="float: left; position: relative; top: 180px">{{ $user->name }}</h2>
+            <h2 style="position: relative; top: 10px;left: 5px">{{ $user->name }}</h2>
+            <p style="float: left; position: relative; top: 5px; left: 5px">{{ $user->bio }}</p>
         </div>
 
 

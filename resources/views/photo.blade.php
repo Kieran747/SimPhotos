@@ -1,5 +1,6 @@
 @extends('layouts.app')
 <title>{{ $photo->aircraft }} - {{ $photo->registration }} - {{ $photo->airline }} </title>
+
 <style>
     .head {
         position: relative; float: left;
@@ -13,6 +14,7 @@
         font-size: 20px;
     }
 </style>
+
 @section('content')
 
 
@@ -114,8 +116,30 @@
                 <img src="/storage/images/accounts/{{ $account_photo }}" style="width: 50px; height: 50px; float: left">
                 <a href="/user/{{ $comment_id }}"><p style="color: #3490dc; font-weight: bold; margin-left: 5px; position: relative; left: 3px; bottom: 5px">{{ $name }}</p></a>
                 <p style="position: relative; bottom: 23px; left: 3px; overflow: hidden;">{{ $comment->value }}</p>
+
+                    @auth
+                <?php if( $comment->user_id == Auth::user()->id ){
+                    echo '<form action="/comment-delete" method="POST">';
+
+                    } else {
+                    echo '';
+                    }
+
+                    ?>
+                    {{ csrf_field() }}
+                    <?php if( $comment->user_id == Auth::user()->id ){
+                    echo '<button  name="submit" style="width: 45px; height: 20px; background-color: red; color: white; font-size: 11px;border: 0px; float:right; position: relative; bottom: 60px;">Delete</button>';
+                    echo '</form>';
+                    } else
+                        echo '';
+                ?>
+                        @endauth
+
+
             </div>
             @endforeach
+            <h2 class="head" style="border-bottom: 1px solid #282828; font-size: 20px; width: 79.2%; margin-top: 5px"></h2>
+
         </div>
 
     </div>

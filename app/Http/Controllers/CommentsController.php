@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\comments;
+
 class CommentsController extends Controller
 {
     public function store()
@@ -19,6 +21,14 @@ class CommentsController extends Controller
         $comment->save();
 
 
+        return back();
+    }
+
+    public function destroy()
+    {
+
+        $delete = comments::where('comment_id', request('id'));
+        $delete->delete();
         return back();
     }
 }

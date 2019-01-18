@@ -24,4 +24,17 @@ class AccountController extends Controller
 
         return back();
     }
+
+    public function update()
+    {
+        $account = users::where('id', request('id'))->first();
+
+        $account->name = request('name');
+        $account->email = request('email');
+        $account->bio = request('bio');
+
+        $account->update();
+
+        return back();
+    }
 }
